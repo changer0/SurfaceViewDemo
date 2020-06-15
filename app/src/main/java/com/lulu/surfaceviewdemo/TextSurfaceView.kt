@@ -11,6 +11,8 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 
 /**
  * @author zhanglulu on 2020/6/15.
@@ -147,11 +149,12 @@ class TextSurfaceView(context: Context): SurfaceView(context), SurfaceHolder.Cal
         return true
     }
 
-    private fun flingAnim(endValue: Float) {
+    private fun flingAnim(endValue: Float ) {
         val ofFloat = ValueAnimator.ofFloat(0F, endValue)
-        ofFloat.duration = 100
+        ofFloat.duration = 500
+        ofFloat.interpolator = AccelerateDecelerateInterpolator()
         ofFloat.addUpdateListener {
-            dragY -= it.animatedValue as Float
+            dragY -= (endValue - it.animatedValue as Float)
         }
         ofFloat.start()
     }
