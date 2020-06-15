@@ -15,7 +15,7 @@ import kotlin.math.sin
  * @author zhanglulu on 2020/6/15.
  * for
  */
-private const val TAG = "TestSurfaceView"
+private const val TAG = "SinSurfaceView"
 class SinSurfaceView(context: Context): SurfaceView(context), SurfaceHolder.Callback, Runnable {
 
     private var mCanvas: Canvas? = null
